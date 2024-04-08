@@ -1,8 +1,10 @@
 import android.app.Activity
 import android.content.Intent
 import com.example.salon.R
+import com.example.salon.notLoggedIn.RegistrationActivity
 import com.example.salon.user.ProfileActivity
 import com.example.salon.user.ServicesActivity
+import com.example.salon.user.TimetableActivity
 import com.example.salon.user.UserScreenActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 object BottomNavigationHelper {
@@ -28,6 +30,13 @@ object BottomNavigationHelper {
                 R.id.navigation_profile -> {
                     if (currentScreen != R.id.navigation_profile) {
                         val intent = Intent(activity, ProfileActivity::class.java)
+                        activity.startActivity(intent)
+                    }
+                    true
+                }
+                R.id.navigation_timetable -> {
+                    if (currentScreen != R.id.navigation_timetable) {
+                        val intent = Intent(activity, TimetableActivity::class.java)
                         activity.startActivity(intent)
                     }
                     true

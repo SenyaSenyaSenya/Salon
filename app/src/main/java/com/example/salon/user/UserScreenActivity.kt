@@ -18,6 +18,5 @@ class UserScreenActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigationView(this, bottomNavigationView, R.id.navigation_home)
         val username = intent.getStringExtra("username")
-
     }
 }

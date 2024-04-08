@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Salon"
+        tools:targetApi="31">
+        <activity
+            android:name=".user.TimetableActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notLoggedIn.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notLoggedIn.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.ServicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserScreenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_user_screen"
+            android:theme="@style/Theme.Salon.NoActionBar" />
+        <activity
+            android:name=".notLoggedIn.SighUpActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

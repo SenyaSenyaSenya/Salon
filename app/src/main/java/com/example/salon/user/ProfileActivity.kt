@@ -11,6 +11,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         BottomNavigationHelper.setupBottomNavigationView(this, bottomNavigationView, R.id.navigation_profile)
     }

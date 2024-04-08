@@ -1,7 +1,6 @@
 import android.app.Activity
 import android.content.Intent
 import com.example.salon.R
-import com.example.salon.notLoggedIn.RegistrationActivity
 import com.example.salon.user.ProfileActivity
 import com.example.salon.user.ServicesActivity
 import com.example.salon.user.TimetableActivity

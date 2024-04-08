@@ -18,17 +18,32 @@
         android:inputType="textEmailAddress"
         android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/passwordEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#E0E0E0"
-        android:hint="Пароль"
-        android:inputType="textPassword"
-        android:padding="10dp" />
+        android:layout_marginEnd="40dp">
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#E0E0E0"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/passwordVisibilityImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_visibility_off"
+            android:clickable="true"
+            android:onClick="togglePasswordVisibility" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/loginButton"

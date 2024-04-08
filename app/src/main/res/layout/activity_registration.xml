@@ -7,39 +7,55 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <EditText
-        android:id="@+id/emailEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#E0E0E0"
-        android:hint="Электронная почта"
-        android:inputType="textEmailAddress"
-        android:padding="10dp" />
+        android:padding="10dp">
 
-    <EditText
-        android:id="@+id/passwordEditText"
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Электронная почта"
+            android:inputType="textEmailAddress"
+            android:paddingRight="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#E0E0E0"
-        android:hint="Пароль"
-        android:inputType="textPassword"
-        android:padding="10dp" />
-    <EditText
-        android:id="@+id/passwordSecondEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#E0E0E0"
-        android:hint="Повторите пароль"
-        android:inputType="textPassword"
-        android:padding="10dp" />
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:paddingRight="8dp" />
+
+        <ImageView
+            android:id="@+id/passwordVisibilityImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_visibility_off"
+            android:contentDescription="Password visibility"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"

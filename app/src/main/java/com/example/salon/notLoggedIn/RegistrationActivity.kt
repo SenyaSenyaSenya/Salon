@@ -1,64 +1,71 @@
 package com.example.salon.notLoggedIn
 
+import PasswordUtils
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.salon.R
-import com.example.salon.util.DatabaseHelper
-import com.example.salon.util.User
 
 class RegistrationActivity : AppCompatActivity() {
-    private lateinit var usernameEditText: EditText
+    private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var passwordVisibilityImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
 
-        usernameEditText = findViewById(R.id.emailEditText)
+        emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
-        databaseHelper = DatabaseHelper(this)
+        passwordVisibilityImageView = findViewById(R.id.passwordVisibilityImageView)
 
-        val registerButton: Button = findViewById(R.id.registerButton)
-        registerButton.setOnClickListener {
-            registerUser()
+        setupCreateAccountButton()
+        setupPasswordEditText()
+    }
+
+    private fun setupCreateAccountButton() {
+        val createAccountButton: Button = findViewById(R.id.registerButton)
+        createAccountButton.setOnClickListener {
+            validateFields()
         }
+    }
+
+    private fun setupPasswordEditText() {
+        passwordVisibilityImageView.visibility = View.GONE // Скрываем иконку глаза при запуске активности
+
+        passwordEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                PasswordUtils.updatePasswordVisibilityIcon(
+                    passwordEditText,
+                    passwordVisibilityImageView
+                )
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-    }
 
-    private fun registerUser() {
-        val username = usernameEditText.text.toString()
-        val password = passwordEditText.text.toString()
-
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Введите логин и пароль", Toast.LENGTH_SHORT).show()
-//        } else if (!isValidEmail(username)) {
-//            Toast.makeText(this, "Введите корректный адрес электронной почты", Toast.LENGTH_SHORT).show()
-        } else {
-            val user = User(
-                username = username,
-                password = password,
-                firstName = "",
-                lastName = "",
-                dateOfBirth = "",
-                phoneNumber = "",
-                photoUri = ""
-            )
-            databaseHelper.addUser(user)
-
-            Toast.makeText(this, "Подтвердите регистрацию на почте", Toast.LENGTH_SHORT).show()
-            finish()
+        passwordVisibilityImageView.setOnClickListener {
+            PasswordUtils.togglePasswordVisibility(passwordEditText, passwordVisibilityImageView)
         }
     }
 
-//    private fun isValidEmail(email: String): Boolean {
-//        val pattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-//        return email.matches(pattern.toRegex())
-//    }
+    private fun validateFields() {
+        val email = emailEditText.text.toString()
+        val password = passwordEditText.text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Введите логин и пароль", Toast.LENGTH_SHORT).show()
+        } else {
+            // Регистрация пользователя
+        }
+    }
 }

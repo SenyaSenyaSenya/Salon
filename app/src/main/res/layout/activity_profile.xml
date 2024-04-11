@@ -16,7 +16,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Фотография клиента -->
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageViewProfile"
                 android:layout_width="150dp"
@@ -57,7 +56,6 @@
 
             </LinearLayout>
 
-            <!-- Фамилия -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -172,7 +170,7 @@
     <!-- Нижняя навигационная панель -->
     <include
         android:id="@+id/bottomNavigationView"
-        layout="@layout/bottom_navigation"
+        layout="@layout/user_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />

@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_clients"
+            android:icon="@drawable/icon_clients"
+            android:title="Клиенты" />
+        <item
+            android:id="@+id/menu_timetable"
+            android:icon="@drawable/icon_timetable"
+            android:title="Расписание" />
+        <item
+            android:id="@+id/menu_service"
+            android:icon="@drawable/icon_service"
+            android:title="Услуги" />
+        <item
+            android:id="@+id/menu_masters"
+            android:icon="@drawable/icon_masters"
+            android:title="Мастера" />
+        <item
+            android:id="@+id/menu_discount"
+            android:title="Скидки"
+            android:icon="@drawable/icon_discount" />
+
+    </group>
+</menu>

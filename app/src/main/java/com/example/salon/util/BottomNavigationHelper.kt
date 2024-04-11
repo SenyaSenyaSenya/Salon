@@ -1,3 +1,5 @@
+package com.example.salon.util
+
 import android.app.Activity
 import android.content.Intent
 import com.example.salon.R
@@ -10,6 +12,7 @@ object BottomNavigationHelper {
     fun setupBottomNavigationView(activity: Activity, bottomNavigationView: BottomNavigationView?, currentScreen: Int) {
         bottomNavigationView?.selectedItemId = currentScreen
 
+        @Suppress("DEPRECATION")
         bottomNavigationView?.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_home -> {

@@ -1,6 +1,6 @@
 package com.example.salon.notLoggedIn
 
-import PasswordUtils
+import com.example.salon.util.PasswordUtils
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher

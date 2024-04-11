@@ -1,3 +1,5 @@
+package com.example.salon.util
+
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View

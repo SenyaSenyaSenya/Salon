@@ -1,6 +1,6 @@
 package com.example.salon.notLoggedIn
 
-import PasswordUtils
+import com.example.salon.util.PasswordUtils
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -10,10 +10,11 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.salon.R
+import com.example.salon.admin.AdminScreenActivity
 import com.example.salon.user.UserScreenActivity
 import com.example.salon.util.DatabaseHelper
 
-class SighUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var passwordVisibilityImageView: ImageView
@@ -22,6 +23,7 @@ class SighUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+        @Suppress("DEPRECATION")
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
 
         emailEditText = findViewById(R.id.emailEditText)
@@ -50,7 +52,8 @@ class SighUpActivity : AppCompatActivity() {
     }
 
     private fun setupPasswordEditText() {
-        passwordVisibilityImageView.visibility = View.GONE // Скрываем иконку глаза при запуске активности
+        passwordVisibilityImageView.visibility =
+            View.GONE // Скрываем иконку глаза при запуске активности
 
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -85,8 +88,10 @@ class SighUpActivity : AppCompatActivity() {
 
     private fun login(username: String, password: String) {
         val isLoggedIn = databaseHelper.checkLogin(username, password)
-
-        if (isLoggedIn) {
+        if (username == "admin" && password == "admin") {
+            val intent1 = Intent(this, AdminScreenActivity::class.java)
+            startActivity(intent1)
+        } else if (isLoggedIn) {
             val intent = Intent(this, UserScreenActivity::class.java)
             intent.putExtra("username", username) // передача имени пользователя
             startActivity(intent)

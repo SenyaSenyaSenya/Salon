@@ -57,7 +57,7 @@ class DatabaseHelper(context: Context) :
         db.close()
     }
 
-    fun getUser(username: String, password: String): User? {
+    private fun getUser(username: String, password: String): User? {
         val db = readableDatabase
 
         val selection = "$COLUMN_USERNAME = ? AND $COLUMN_PASSWORD = ?"

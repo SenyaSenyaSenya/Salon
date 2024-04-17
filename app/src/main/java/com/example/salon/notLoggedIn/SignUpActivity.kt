@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.salon.R
-import com.example.salon.admin.AdminScreenActivity
+import com.example.salon.admin.ClientsActivity
 import com.example.salon.user.UserScreenActivity
 import com.example.salon.util.DatabaseHelper
 
@@ -89,7 +89,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun login(username: String, password: String) {
         val isLoggedIn = databaseHelper.checkLogin(username, password)
         if (username == "admin" && password == "admin") {
-            val intent1 = Intent(this, AdminScreenActivity::class.java)
+            val intent1 = Intent(this, ClientsActivity::class.java)
             startActivity(intent1)
         } else if (isLoggedIn) {
             val intent = Intent(this, UserScreenActivity::class.java)

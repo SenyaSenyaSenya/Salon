@@ -20,7 +20,7 @@
             android:name=".admin.MastersActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.TaskActivity"
+            android:name=".admin.services.ServActivity"
             android:exported="false" />
         <activity
             android:name=".admin.ScheduleActivity"
@@ -30,9 +30,6 @@
             android:exported="false" />
         <activity
             android:name=".user.TimetableActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.AdminScreenActivity"
             android:exported="false" />
         <activity
             android:name=".notLoggedIn.SplashActivity"

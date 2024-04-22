@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.salon.R
 import com.example.salon.admin.ClientsActivity
 import com.example.salon.user.UserScreenActivity
-import com.example.salon.util.DatabaseHelper
+import com.example.salon.util.db.DatabaseHelper
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText

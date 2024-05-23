@@ -1,165 +1,181 @@
 <!-- activity_profile.xml -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E1D9EF">
-
-    <ScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:background="#E1D9EF">
+    <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:clickable="true"
+            android:padding="4dp">
+    <ImageView
+            android:id="@+id/imageViewEdit"
+            android:layout_width="47dp"
+            android:layout_height="49dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:clickable="true"
+            android:src="@drawable/icon_complete" />
+    </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageViewProfile"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/profile_picture"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"
-                app:civ_border_color="#BBB4C6"
-                app:civ_border_width="2dp"
-                app:civ_border_overlay="true" />
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <!-- Формы с информацией о клиенте -->
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/rounded_rectangle_gray"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp">
+                android:padding="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageViewProfile"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/profile_picture"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="6dp"
+                    app:civ_border_color="#BBB4C6"
+                    app:civ_border_width="2dp"
+                    app:civ_border_overlay="true" />
+
+            <!-- Формы с информацией о клиенте -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp">
 
                 <!-- Имя -->
                 <TextView
-                    android:id="@+id/textViewFirstNameLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Имя:"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
+                        android:id="@+id/textViewFirstNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Имя:"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textViewFirstName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Имя клиента"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
+                <EditText
+                        android:id="@+id/textViewFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Имя клиента"
+                        android:textSize="16sp"
+                        android:layout_marginTop="0dp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_rectangle_gray"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/textViewLastNameLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Фамилия:"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/textViewLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Фамилия клиента"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp">
+
+                <TextView
+                        android:id="@+id/textViewLastNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Фамилия:"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/textViewLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Фамилия клиента"
+                        android:textSize="16sp"
+                        android:layout_marginTop="0dp" />
 
             </LinearLayout>
 
             <!-- Дата рождения -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_rectangle_gray"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/textViewDateOfBirthLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Дата рождения:"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/textViewDateOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Дата рождения клиента"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp">
+
+                <TextView
+                        android:id="@+id/textViewDateOfBirthLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Дата рождения:"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/textViewDateOfBirth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Дата рождения клиента"
+                        android:textSize="16sp"
+                        android:layout_marginTop="0dp" />
 
             </LinearLayout>
 
             <!-- Телефон -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_rectangle_gray"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/textViewPhoneLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Телефон:"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/textViewPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Телефон клиента"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp">
+
+                <TextView
+                        android:id="@+id/textViewPhoneLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Телефон:"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/textViewPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Телефон клиента"
+                        android:textSize="16sp"
+                        android:layout_marginTop="0dp" />
 
             </LinearLayout>
 
             <!-- Почта -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_rectangle_gray"
-                android:padding="16dp"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/textViewEmailLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Почта:"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/textViewEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Почта клиента"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_rectangle_gray"
+                    android:padding="12dp"
+                    android:layout_marginBottom="8dp">
+
+                <TextView
+                        android:id="@+id/textViewEmailLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Почта:"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/textViewEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Почта клиента"
+                        android:textSize="16sp"
+                        android:layout_marginTop="0dp" />
 
             </LinearLayout>
 
@@ -169,10 +185,11 @@
 
     <!-- Нижняя навигационная панель -->
     <include
-        android:id="@+id/bottomNavigationView"
-        layout="@layout/user_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom" />
+            android:id="@+id/bottomNavigationView"
+            layout="@layout/user_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

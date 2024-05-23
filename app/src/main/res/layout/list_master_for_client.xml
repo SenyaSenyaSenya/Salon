@@ -1,0 +1,66 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/masterProfileImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/profile_picture"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/masterNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/masterSpecialtyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/masterExperienceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/masterRatingTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/bookAppointmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Записаться"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

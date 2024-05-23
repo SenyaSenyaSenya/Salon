@@ -14,22 +14,25 @@
         android:theme="@style/Theme.Salon"
         tools:targetApi="31">
         <activity
+            android:name=".admin.masters.MasterEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.services.EditServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.DiscountActivity"
+            android:name=".admin.news.NewsActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.MastersActivity"
+            android:name=".admin.masters.MasterActivity"
             android:exported="false" />
         <activity
             android:name=".admin.services.ServActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.ScheduleActivity"
+            android:name=".admin.schedule.ScheduleActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.ClientsActivity"
+            android:name=".admin.clients.ClientsActivity"
             android:exported="false" />
         <activity
             android:name=".user.TimetableActivity"

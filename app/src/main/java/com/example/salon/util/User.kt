@@ -1,7 +1,7 @@
 package com.example.salon.util
 
 data class User(
-    val username: String,
+    val login: String,
     val password: String,
     val firstName: String?,
     val lastName: String?,

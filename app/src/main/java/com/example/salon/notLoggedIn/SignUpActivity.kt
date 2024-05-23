@@ -1,5 +1,6 @@
 package com.example.salon.notLoggedIn
 
+import com.example.salon.user.UserScreenActivity
 import com.example.salon.util.PasswordUtils
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +11,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.salon.R
-import com.example.salon.admin.ClientsActivity
-import com.example.salon.user.UserScreenActivity
+import com.example.salon.admin.clients.ClientsActivity
 import com.example.salon.util.db.DatabaseHelper
 
 class SignUpActivity : AppCompatActivity() {

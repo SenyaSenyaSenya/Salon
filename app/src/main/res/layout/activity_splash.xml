@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Choice"
+            android:text="Rose"
             android:textColor="#3D1583"
             android:fontFamily="@font/akvitania_modern"
             android:textSize="40dp" />

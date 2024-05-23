@@ -41,12 +41,56 @@ class DatabaseHelper(context: Context) :
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
+    internal fun getUser(username: String): User? {
+        val db = readableDatabase
 
+        val selection = "$COLUMN_USERNAME = ?"
+        val selectionArgs = arrayOf(username)
+
+        val cursor = db.query(
+            TABLE_NAME,
+            null,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+
+        val user: User? = if (cursor.moveToFirst()) {
+            val columnIndexUsername = cursor.getColumnIndex(COLUMN_USERNAME)
+            val columnIndexPassword = cursor.getColumnIndex(COLUMN_PASSWORD)
+            val columnIndexFirstName = cursor.getColumnIndex(COLUMN_FIRST_NAME)
+            val columnIndexLastName = cursor.getColumnIndex(COLUMN_LAST_NAME)
+            val columnIndexDateOfBirth = cursor.getColumnIndex(COLUMN_DATE_OF_BIRTH)
+            val columnIndexPhoneNumber = cursor.getColumnIndex(COLUMN_PHONE_NUMBER)
+            val columnIndexPhotoUri = cursor.getColumnIndex(COLUMN_PHOTO_URI)
+
+            if (columnIndexUsername >= 0) {
+                User(
+                    login = cursor.getString(columnIndexUsername),
+                    password = cursor.getString(columnIndexPassword),
+                    firstName = cursor.getString(columnIndexFirstName),
+                    lastName = cursor.getString(columnIndexLastName),
+                    dateOfBirth = cursor.getString(columnIndexDateOfBirth),
+                    phoneNumber = cursor.getString(columnIndexPhoneNumber),
+                    photoUri = cursor.getString(columnIndexPhotoUri)
+                )
+            } else {
+                null
+            }
+        } else {
+            null
+        }
+        cursor.close()
+        db.close()
+        return user
+    }
     fun addUser(user: User) {
         val db = writableDatabase
 
         val values = ContentValues().apply {
-            put(COLUMN_USERNAME, user.username)
+            put(COLUMN_USERNAME, user.login)
             put(COLUMN_PASSWORD, user.password)
             put(COLUMN_FIRST_NAME, user.firstName)
             put(COLUMN_LAST_NAME, user.lastName)
@@ -58,7 +102,7 @@ class DatabaseHelper(context: Context) :
         db.close()
     }
 
-    private fun getUser(username: String, password: String): User? {
+    internal fun getUser(username: String, password: String): User? {
         val db = readableDatabase
 
         val selection = "$COLUMN_USERNAME = ? AND $COLUMN_PASSWORD = ?"
@@ -85,7 +129,7 @@ class DatabaseHelper(context: Context) :
 
             if (columnIndexUsername >= 0) {
                 User(
-                    username = cursor.getString(columnIndexUsername),
+                    login = cursor.getString(columnIndexUsername),
                     password = cursor.getString(columnIndexPassword),
                     firstName = cursor.getString(columnIndexFirstName),
                     lastName = cursor.getString(columnIndexLastName),
@@ -110,5 +154,102 @@ class DatabaseHelper(context: Context) :
 
         val user = getUser(username, password)
         return user?.password == password
+    }
+    fun updateFirstName(username: String, newFirstName: String) {
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put(COLUMN_FIRST_NAME, newFirstName)
+        }
+
+        val whereClause = "$COLUMN_USERNAME = ?"
+        val whereArgs = arrayOf(username)
+
+        db.update(TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
+    }
+
+    fun updateLastName(username: String, newLastName: String) {
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put(COLUMN_LAST_NAME, newLastName)
+        }
+
+        val whereClause = "$COLUMN_USERNAME = ?"
+        val whereArgs = arrayOf(username)
+
+        db.update(TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
+    }
+
+    fun updateDateOfBirth(username: String, newDateOfBirth: String) {
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put(COLUMN_DATE_OF_BIRTH, newDateOfBirth)
+        }
+
+        val whereClause = "$COLUMN_USERNAME = ?"
+        val whereArgs = arrayOf(username)
+
+        db.update(TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
+    }
+    fun getAllUsers(): List<User> {
+        val userList = mutableListOf<User>()
+
+        val db = readableDatabase
+
+        val cursor = db.query(
+            TABLE_NAME,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
+
+        while (cursor.moveToNext()) {
+            val columnIndexUsername = cursor.getColumnIndex(COLUMN_USERNAME)
+            val columnIndexPassword = cursor.getColumnIndex(COLUMN_PASSWORD)
+            val columnIndexFirstName = cursor.getColumnIndex(COLUMN_FIRST_NAME)
+            val columnIndexLastName = cursor.getColumnIndex(COLUMN_LAST_NAME)
+            val columnIndexDateOfBirth = cursor.getColumnIndex(COLUMN_DATE_OF_BIRTH)
+            val columnIndexPhoneNumber = cursor.getColumnIndex(COLUMN_PHONE_NUMBER)
+            val columnIndexPhotoUri = cursor.getColumnIndex(COLUMN_PHOTO_URI)
+
+            if (columnIndexUsername >= 0) {
+                val user = User(
+                    login = cursor.getString(columnIndexUsername),
+                    password = cursor.getString(columnIndexPassword),
+                    firstName = cursor.getString(columnIndexFirstName),
+                    lastName = cursor.getString(columnIndexLastName),
+                    dateOfBirth = cursor.getString(columnIndexDateOfBirth),
+                    phoneNumber = cursor.getString(columnIndexPhoneNumber),
+                    photoUri = cursor.getString(columnIndexPhotoUri)
+                )
+                userList.add(user)
+            }
+        }
+
+        cursor.close()
+        db.close()
+
+        return userList
+    }
+    fun updatePhoneNumber(username: String, newPhoneNumber: String) {
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put(COLUMN_PHONE_NUMBER, newPhoneNumber)
+        }
+
+        val whereClause = "$COLUMN_USERNAME = ?"
+        val whereArgs = arrayOf(username)
+
+        db.update(TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
     }
 }
